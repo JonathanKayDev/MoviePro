@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoviePro.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220216185107_Initial")]
+    [Migration("20220220102909_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -224,6 +224,170 @@ namespace MoviePro.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MoviePro.Models.Database.Collection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Collection");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.Movie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("Backdrop")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("BackdropType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Overview")
+                        .HasColumnType("text");
+
+                    b.Property<byte[]>("Poster")
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("PosterType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("RunTime")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TagLine")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TrailerUrl")
+                        .HasColumnType("text");
+
+                    b.Property<float>("VoteAverage")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCast", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CastID")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Character")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieCast");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCollection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CollectionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CollectionId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieCollection");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCrew", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CrewID")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Job")
+                        .HasColumnType("text");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieCrew");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -273,6 +437,61 @@ namespace MoviePro.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCast", b =>
+                {
+                    b.HasOne("MoviePro.Models.Database.Movie", "Movie")
+                        .WithMany("Cast")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCollection", b =>
+                {
+                    b.HasOne("MoviePro.Models.Database.Collection", "Collection")
+                        .WithMany("MovieCollections")
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoviePro.Models.Database.Movie", "Movie")
+                        .WithMany("Collections")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Collection");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.MovieCrew", b =>
+                {
+                    b.HasOne("MoviePro.Models.Database.Movie", "Movie")
+                        .WithMany("Crew")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.Collection", b =>
+                {
+                    b.Navigation("MovieCollections");
+                });
+
+            modelBuilder.Entity("MoviePro.Models.Database.Movie", b =>
+                {
+                    b.Navigation("Cast");
+
+                    b.Navigation("Collections");
+
+                    b.Navigation("Crew");
                 });
 #pragma warning restore 612, 618
         }

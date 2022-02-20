@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MoviePro.Models.Database;
 
 namespace MoviePro.Data
 {
@@ -9,5 +10,7 @@ namespace MoviePro.Data
             : base(options)
         {
         }
+
+        public DbSet<Collection> Collection { get; set; }
     }
 }
