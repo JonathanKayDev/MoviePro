@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MoviePro.Data;
 using MoviePro.Models.Settings;
 using MoviePro.Services;
+using MoviePro.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 // register SeedService
 builder.Services.AddTransient<SeedService>();
+// register TMDBMovieService and HttpClient
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();
 
 var app = builder.Build();
 
