@@ -29,6 +29,8 @@ builder.Services.AddTransient<SeedService>();
 // register TMDBMovieService and HttpClient
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();
+// register TMDBMappingService
+builder.Services.AddScoped<IDataMappingService, TMDBMappingService>();
 
 var app = builder.Build();
 
