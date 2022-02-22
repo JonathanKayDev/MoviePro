@@ -15,7 +15,7 @@ namespace MoviePro.Controllers
         }
 
 
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Details(int id)
         {
             // local variable with raw data from API
             var actor = await _tmdbMovieService.ActorDetailAsync(id);
