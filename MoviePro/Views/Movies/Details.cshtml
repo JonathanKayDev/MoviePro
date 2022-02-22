@@ -1,0 +1,151 @@
+﻿@using MoviePro.Models.Database
+@using MoviePro.Services.Interfaces
+
+@inject IImageService _imageService
+@model Movie
+
+<!-- Movie Info-->
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <img src="@_imageService.DecodeImage(Model.Poster, Model.PosterType)" class="w-100" alt="Poster Image"/>
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2">
+                <button class="btn btn-lg btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#trailer">WATCH TRAILER</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">TITLE:</span> @Model.Title
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">RELEASED:</span> @Model.ReleaseDate.ToString("dd-MMM-yyyy")
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">RATING:</span> @Model.Rating
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">REVIEWS:</span> @Model.VoteAverage
+            </div>
+        </div>
+        <hr />
+        <div class="row mt-3 mb-2">
+            <div class="col">
+                <span class="fw-bolder h5">OVERVIEW:</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span class="h5 ms-4">@Model.Overview</span>
+            </div>
+        </div>
+
+@*        <div class="embed-responsive embed-responsive-16by9">
+            @{
+                // Isolating a piece of data to use it as the embed source
+                var key = Model.TrailerUrl.Split("=").Last();
+                var source = $"https://www.youtube.com/embed/{key}";
+            }
+
+            <iframe width="560" height="315" src="@source"
+                    title="Youtube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>*@
+    </div>
+</div>
+
+<!-- Cast Info-->
+<div class="row">
+    <div class="col">
+        <span class="h5 fw-bolder"> STARRING:</span>
+    </div>
+</div>
+
+@foreach (var actor in Model.Cast.Take(5))
+{
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-2">
+                        <img src="@actor.ImageUrl" class="img-fluid" style="width: 10rem" alt="Actor Image">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: @actor.Name</h5>
+                            <p class="card-text">Character: @actor.Character</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<!-- Modals-->
+<div class="modal fade" id="trailer" tabindex="-1" role="dialog" aria-labelledby="trailerLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">@Model.Title</h5>
+        <button id="trailer-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body" id="yt-player">
+        <div class="ratio ratio-16x9">
+            @{
+                // Isolating a piece of data to use it as the embed source
+                var key = Model.TrailerUrl.Split("=").Last();
+                var source = $"https://www.youtube.com/embed/{key}";
+            }
+
+            <iframe width="560" height="315" src="@source"
+                    title="Youtube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+@*<!-- Modal -->
+<div class="modal fade" id="trailer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>*@
