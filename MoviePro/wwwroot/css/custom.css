@@ -1,0 +1,29 @@
+﻿.card-body {
+    background-color: #1f2532;
+}
+
+.carousel-inner {
+    opacity: 0.75;
+}
+
+.card-img-top {
+    /*border-radius: 0.5rem !important;*/
+}
+
+.card {
+    border: 0;
+}
+
+.hr-blue {
+    height: 1px !important;
+    background-color: #007bff !important;
+}
+
+.hr-div {
+    padding-left: 0 !important;
+    padding-right: 0!important;
+}
+
+.library-titles {
+    color: #007bff;
+}

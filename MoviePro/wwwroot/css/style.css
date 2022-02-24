@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700");
 body {
-  line-height: 1.4;
-  font-family: "Titillium Web", sans-serif;
-  -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+    font-family: "Titillium Web", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: linear-gradient(rgba(0, 35, 85, 0.25), rgba(25, 0, 85, 0.2)), url(/img/cinema_edited.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 p {

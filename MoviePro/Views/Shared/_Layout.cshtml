@@ -46,6 +46,8 @@
   <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
+  <!-- JK Custom Stylesheet-->
+  <link rel="stylesheet" href="/css/custom.css">
   <!-- Bootstrap -->
   @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
 
@@ -88,7 +90,7 @@ Fixed Navigation
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg">
                     <a class="navbar-brand" href="index.html">
-                        MoviePro
+                        Movie Pro
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -130,16 +132,23 @@ Fixed Navigation
                 </nav>
             </div>
         </div>
-        <div class="row mb-2">
-            <div class="col-lg-12">
-                <button class="btn btn-main-sm">Search</button>
+        <div class="row mb-2 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <form asp-action="" asp-controller="">
+                    <div class="input-group">
+                        <input type="text" name="SearchTerm" class="form-control text-search" placeholder="Search Movies">
+                        <div class="input-group-append">
+                            <button class="btn btn-main-sm" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </header>
 
 <!-- Div to add separation between header and body-->
-<div class="row mt-5 mb-5">
+<div class="row mt-5 mb-5 py-4">
     <div class="col">
 
     </div>

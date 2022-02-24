@@ -15,7 +15,7 @@
 
     .clampTitle {
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -29,7 +29,7 @@
 <section class="px-4">
     <div class="row">
         <div class="d-grid gap-2">
-            <span class="btn btn-lg btn-primary fw-bolder border-dark">UPCOMING</span>
+            <h2 class="library-titles">UPCOMING</h2>
         </div>
     </div>
     <div class="row">
@@ -44,14 +44,12 @@
                                 @foreach (var movie in Model.Upcoming.results.Skip(slide*4).Take(4))
                                 {
                                     <div class="col-sm-3 mb-2">
-                                        <div class="card" style="width: 18rem;">
+                                        <div class="card" style="width: 15.5rem;">
                                             <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                             <div class="card-body">
-                                            <h5 class="card-title clampTitle">@movie.title</h5>
+                                            <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                             <p class="card-text clampOverview">@movie.overview</p>
-                                            <div class="d-grid gap-2">
                                                 <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
-                                            </div>
                                             </div>
                                         </div>
                                     </div>
@@ -73,11 +71,19 @@
     </div>
 </section>
 
+
+
+
 <!-- Now Playing-->
 <section class="px-4">
+    <div class="row mt-4">
+        <div class="col-12 hr-div">
+            <hr class="hr-blue"/>
+        </div>
+    </div>
     <div class="row">
         <div class="d-grid gap-2">
-            <span class="btn btn-lg btn-primary fw-bolder border-dark">NOW PLAYING</span>
+            <h2 class="library-titles">NOW PLAYING</h2>
         </div>
     </div>
     <div class="row">
@@ -92,10 +98,10 @@
                                 @foreach (var movie in Model.NowPlaying.results.Skip(slide*4).Take(4))
                                 {
                                     <div class="col-sm-3 mb-2">
-                                        <div class="card" style="width: 18rem;">
+                                        <div class="card" style="width: 15.5rem;">
                                             <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                             <div class="card-body">
-                                            <h5 class="card-title clampTitle">@movie.title</h5>
+                                            <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                             <p class="card-text clampOverview">@movie.overview</p>
                                             <div class="d-grid gap-2">
                                                 <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
@@ -123,9 +129,14 @@
 
 <!-- Popular-->
 <section class="px-4">
+    <div class="row mt-4">
+        <div class="col-12 hr-div">
+            <hr class="hr-blue"/>
+        </div>
+    </div>
     <div class="row">
         <div class="d-grid gap-2">
-            <span class="btn btn-lg btn-primary fw-bolder border-dark">POPULAR</span>
+            <h2 class="library-titles">POPULAR</h2>
         </div>
     </div>
     <div class="row">
@@ -140,10 +151,10 @@
                                 @foreach (var movie in Model.Popular.results.Skip(slide*4).Take(4))
                                 {
                                     <div class="col-sm-3 mb-2">
-                                        <div class="card" style="width: 18rem;">
+                                        <div class="card" style="width: 15.5rem;">
                                             <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                             <div class="card-body">
-                                            <h5 class="card-title clampTitle">@movie.title</h5>
+                                            <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                             <p class="card-text clampOverview">@movie.overview</p>
                                             <div class="d-grid gap-2">
                                                 <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
@@ -171,9 +182,14 @@
 
 <!-- Top Rated-->
 <section class="px-4">
+    <div class="row mt-4">
+        <div class="col-12 hr-div">
+            <hr class="hr-blue"/>
+        </div>
+    </div>
     <div class="row">
         <div class="d-grid gap-2">
-            <span class="btn btn-lg btn-primary fw-bolder border-dark">TOP RATED</span>
+            <h2 class="library-titles">TOP RATED</h2>
         </div>
     </div>
     <div class="row">
@@ -188,10 +204,10 @@
                                 @foreach (var movie in Model.TopRated.results.Skip(slide*4).Take(4))
                                 {
                                     <div class="col-sm-3 mb-2">
-                                        <div class="card" style="width: 18rem;">
+                                        <div class="card" style="width: 15.5rem;">
                                             <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                             <div class="card-body">
-                                            <h5 class="card-title clampTitle">@movie.title</h5>
+                                            <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                             <p class="card-text clampOverview">@movie.overview</p>
                                             <div class="d-grid gap-2">
                                                 <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
