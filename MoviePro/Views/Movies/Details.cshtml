@@ -6,19 +6,184 @@
 
 <!-- Movie Info-->
 <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-3 mr-4">
         <div class="row">
             <img src="@_imageService.DecodeImage(Model.Poster, Model.PosterType)" class="w-100" alt="Poster Image"/>
         </div>
         <div class="row">
-            <div class="d-grid gap-2">
-                <button class="btn btn-lg btn-danger fw-bold" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
+            <div class=" col-12 mt-2">
+                <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col h6">
+                <span class="text-light">Title:</span> 
+                <br />
+                <span class="text-muted">@Model.Title</span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col h6">
+                <span class="text-light">Rating:</span> 
+                <br />
+                <span class="text-muted">@Model.Rating</span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col h6">
+                <span class="text-light">Release:</span> 
+                <br />
+                <span class="text-muted">@Model.ReleaseDate.ToString("dd-MMM-yyyy")</span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col h6">
+                <span class="text-light">Director:</span> 
+                <br />
+                <!-- ToDo: bug, does not get director-->
+                <span class="text-muted">@Model.Crew.Where(c => c.Department == "Directing").FirstOrDefault()</span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col h6">
+                <span class="text-light">Movie Id:</span> 
+                <br />
+                <span class="text-muted">@Model.MovieId</span>
             </div>
         </div>
     </div>
 
     <div class="col-sm-12 col-md-6">
+        <div class="row justify-content-between">
+            <div class="col mt-auto">
+                <h3 class="text-light">@Model.Title</h3> 
+            </div>
+            <div class="col-2 mt-auto">
+                <h6 class="text-muted">@Model.VoteAverage/10</h6>
+            </div>
+        </div>
         <div class="row">
+            <div class="col">
+                <hr class="hr-blue" />
+            </div>
+        </div>
+        <div class="row">
+			<div class="col-md-12">
+				<div class="commonTab">
+					<ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview"
+							  aria-selected="true">Overview</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="cast-tab" data-toggle="tab" href="#cast" role="tab" aria-controls="cast"
+							  aria-selected="false">Cast</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="crew-tab" data-toggle="tab" href="#crew" role="tab" aria-controls="crew"
+							  aria-selected="false">Crew</a>
+						</li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+							<span class="h5 text-light"> OVERVIEW:</span>
+                            <div class="row mt-2">
+								<div class="col align-self-center text-bg mx-3">
+                                    <p class="text-light font-weight-bold mt-2">@Model.TagLine</p>
+                                    <p>@Model.Overview</p>
+								</div>
+							</div>
+                            <!-- Starring-->
+                            <div class="row mt-4">
+                                <div class="col mb-2">
+                                    <span class="h5 text-light"> STARRING:</span>
+                                </div>
+                            </div>
+
+                            @foreach (var actor in Model.Cast.Take(5))
+                            {
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <div class="row gy-2">
+                                                <div class="col-2">
+                                                    <img src="@actor.ImageUrl" class="img-fluid" alt="Actor Image">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">Name: @actor.Name</a></h5>
+                                                        <p class="card-text">Character: @actor.Character</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+						</div>
+						<div class="tab-pane fade" id="cast" role="tabpanel" aria-labelledby="cast-tab">
+                            <!-- Cast-->
+                            <div class="row mt-4">
+                                <div class="col mb-2">
+                                    <span class="h5 text-light"> CAST:</span>
+                                </div>
+                            </div>
+
+                            @foreach (var actor in Model.Cast)
+                            {
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <div class="row gy-2">
+                                                <div class="col-2">
+                                                    <img src="@actor.ImageUrl" class="img-fluid" alt="Actor Image">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">Name: @actor.Name</a></h5>
+                                                        <p class="card-text">Character: @actor.Character</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+						</div>
+						<div class="tab-pane fade" id="crew" role="tabpanel" aria-labelledby="crew-tab">
+                            <!-- Crew-->
+                            <div class="row mt-4">
+                                <div class="col mb-2">
+                                    <span class="h5 text-light"> CREW:</span>
+                                </div>
+                            </div>
+
+                            @foreach (var member in Model.Crew)
+                            {
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <div class="row gy-2">
+                                                <div class="col-2">
+                                                    <img src="@member.ImageUrl" class="img-fluid" alt="Crew Image">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@member.CrewID">Name: @member.Name</a></h5>
+                                                        <p class="card-text">Department: @member.Department</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+@*        <div class="row">
             <div class="col h5">
                 <span class="fw-bolder me-2">TITLE:</span> @Model.Title
             </div>
@@ -52,36 +217,10 @@
                 <span class="h5 ms-4">@Model.Overview</span>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 
-<!-- Cast Info-->
-<div class="row">
-    <div class="col">
-        <span class="h5 fw-bolder"> STARRING:</span>
-    </div>
-</div>
 
-@foreach (var actor in Model.Cast.Take(5))
-{
-    <div class="row">
-        <div class="col">
-            <div class="card mb-3">
-                <div class="row no-gutters">
-                    <div class="col-md-2">
-                        <img src="@actor.ImageUrl" class="img-fluid" style="width: 10rem" alt="Actor Image">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">Name: @actor.Name</a></h5>
-                            <p class="card-text">Character: @actor.Character</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-}
 
 
 
@@ -118,3 +257,39 @@
 </div>
 
 
+<!-- old code-->
+@*        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">TITLE:</span> @Model.Title
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">RELEASED:</span> @Model.ReleaseDate.ToString("dd-MMM-yyyy")
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">RATING:</span> @Model.Rating
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col h5">
+                <span class="fw-bolder me-2">REVIEWS:</span> @Model.VoteAverage
+            </div>
+        </div>
+        <hr />
+        <div class="row mt-3 mb-2">
+            <div class="col">
+                <span class="fw-bolder h5">OVERVIEW:</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span class="h5 ms-4">@Model.Overview</span>
+            </div>
+        </div>
+    </div>*@

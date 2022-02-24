@@ -14,6 +14,17 @@
     border: 0;
 }
 
+.carousel-control-prev {
+    margin-bottom: 100px;
+    margin-left:-50px;
+}
+
+.carousel-control-next {
+    margin-bottom: 100px;
+    margin-right: -50px;
+}
+
+
 .hr-blue {
     height: 1px !important;
     background-color: #007bff !important;
@@ -26,4 +37,8 @@
 
 .library-titles {
     color: #007bff;
+}
+
+.text-bg {
+    background-color: #1f2532;
 }

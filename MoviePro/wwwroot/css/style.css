@@ -154,16 +154,17 @@ a:focus, a:hover {
 }
 
 #preloader {
-  background: #f0326b;
-  height: 100%;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  z-index: 99;
-  display: flex;
-  align-items: center;
+    /*  background: #1f2532;*/
+    background-color: rgba(31,37,50, 0.5); 
+    height: 100%;
+    /*  opacity: 0.5;*/
+    filter: alpha(opacity=100);
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    align-items: center;
 }
 
 .preloader {
@@ -187,7 +188,7 @@ a:focus, a:hover {
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: #fff;
+  background-color: #f0326b;
   border-radius: 100%;
   -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
   animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;

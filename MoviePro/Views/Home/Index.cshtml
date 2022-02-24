@@ -40,7 +40,7 @@
                     for (var slide = 0; slide <= 3; slide++)
                     {
                         <div class="carousel-item @classText">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 @foreach (var movie in Model.Upcoming.results.Skip(slide*4).Take(4))
                                 {
                                     <div class="col-sm-3 mb-2">
