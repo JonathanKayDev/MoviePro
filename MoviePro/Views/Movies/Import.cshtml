@@ -1,0 +1,44 @@
+﻿@using MoviePro.Models.Database
+@using MoviePro.Services.Interfaces
+
+@inject IImageService _imageService
+@inject IRemoteMovieService _tmdbMovieService;
+
+@*@model Movie*@
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <h2 class="text-light text-center">Discover & Import Movies</h2>
+    </div>
+    <div class="col-12">
+        <hr class="hr-blue" />
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-6">
+        <form asp-action="Import">
+            <div class="input-group" id="movieSearch">
+                <input type="hidden" id="movie-id" name="id" value="0" />
+                <input type="text" name="SearchTerm" class="form-control text-search typeahead" placeholder="Import">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Import</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <hr class="hr-blue" />  
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script>
+        let query = '@_tmdbMovieService.GenerateSearchRequestUri()';
+        query = query.replace(/amp;/g,"").replace("%25SEARCH", "SEARCH");
+    </script>
+
+    <script src="~/lib/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="~/js/custom.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

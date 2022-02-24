@@ -419,8 +419,8 @@ a:focus, a:hover {
 }
 
 .commonTab .nav-tabs .nav-item .nav-link {
-  background: #f9f9f9;
-  color: #666;
+  background: #666;
+  color: #fff;
   text-transform: capitalize;
   border-radius: 0;
 }

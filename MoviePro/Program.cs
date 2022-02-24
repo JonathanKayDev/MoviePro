@@ -61,6 +61,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+//
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 // call SeedService
 var dataService = app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedService>();
 await dataService.ManageDataAsync();

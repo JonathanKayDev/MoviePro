@@ -110,9 +110,9 @@
                                                     <img src="@actor.ImageUrl" class="img-fluid" alt="Actor Image">
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">Name: @actor.Name</a></h5>
-                                                        <p class="card-text">Character: @actor.Character</p>
+                                                    <div class="card-body card-body-static">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">@actor.Name</a></h5>
+                                                        <p class="card-text">@actor.Character</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,9 +139,9 @@
                                                     <img src="@actor.ImageUrl" class="img-fluid" alt="Actor Image">
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">Name: @actor.Name</a></h5>
-                                                        <p class="card-text">Character: @actor.Character</p>
+                                                    <div class="card-body card-body-static">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@actor.CastID">@actor.Name</a></h5>
+                                                        <p class="card-text">@actor.Character</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,9 +168,9 @@
                                                     <img src="@member.ImageUrl" class="img-fluid" alt="Crew Image">
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@member.CrewID">Name: @member.Name</a></h5>
-                                                        <p class="card-text">Department: @member.Department</p>
+                                                    <div class="card-body card-body-static">
+                                                        <h5 class="card-title"><a asp-action="Details" asp-controller="Actors" asp-route-id="@member.CrewID">@member.Name</a></h5>
+                                                        <p class="card-text">Department: @member.Department | Job: @member.Job</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,46 +183,7 @@
 				</div>
 			</div>
 		</div>
-@*        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">TITLE:</span> @Model.Title
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">RELEASED:</span> @Model.ReleaseDate.ToString("dd-MMM-yyyy")
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">RATING:</span> @Model.Rating
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">REVIEWS:</span> @Model.VoteAverage
-            </div>
-        </div>
-        <hr />
-        <div class="row mt-3 mb-2">
-            <div class="col">
-                <span class="fw-bolder h5">OVERVIEW:</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="h5 ms-4">@Model.Overview</span>
-            </div>
-        </div>
-    </div>*@
 </div>
-
-
-
-
 
 
 <!-- Modals-->
@@ -255,41 +216,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- old code-->
-@*        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">TITLE:</span> @Model.Title
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">RELEASED:</span> @Model.ReleaseDate.ToString("dd-MMM-yyyy")
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">RATING:</span> @Model.Rating
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col h5">
-                <span class="fw-bolder me-2">REVIEWS:</span> @Model.VoteAverage
-            </div>
-        </div>
-        <hr />
-        <div class="row mt-3 mb-2">
-            <div class="col">
-                <span class="fw-bolder h5">OVERVIEW:</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="h5 ms-4">@Model.Overview</span>
-            </div>
-        </div>
-    </div>*@

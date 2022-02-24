@@ -1,5 +1,5 @@
 ﻿.card-body {
-    background-color: #1f2532;
+    background-color: rgba(31, 37, 50,1);
 }
 
 .carousel-inner {
@@ -12,6 +12,10 @@
 
 .card {
     border: 0;
+}
+
+.card-body-static {
+    background-color: rgba(31, 37, 50,0.75);
 }
 
 .carousel-control-prev {
@@ -40,5 +44,14 @@
 }
 
 .text-bg {
-    background-color: #1f2532;
+    background-color: rgba(31, 37, 50,0.75);
 }
+
+.table {
+    color: lightgray;
+    background-color: rgba(31, 37, 50,0.75);
+}
+
+    .table td {
+        border-top: 1px solid #007bff !important;
+    }

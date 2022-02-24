@@ -280,6 +280,8 @@ The following part can be removed on Server for On Demand Loading) -->
         });
     });
 </script>
+
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
 
