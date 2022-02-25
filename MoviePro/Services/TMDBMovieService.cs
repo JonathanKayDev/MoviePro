@@ -78,6 +78,46 @@ namespace MoviePro.Services
             return movieDetail;
         }
 
+        public async Task<MovieSearch> SearchMoviesAsync(string searchTerm)
+        {
+            // Create a default instance of MovieSearch class
+            MovieSearch movieSearch = new MovieSearch();
+
+            // Assemble the full request uri string
+            var query = $"{_appSettings.TMDBSettings.BaseUrl}/search/movie/";
+            var queryParams = new Dictionary<string, string>()
+            {
+                // Key value pairs
+                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "language", _appSettings.TMDBSettings.QueryOptions.Language },
+                { "query", searchTerm },
+                { "page", _appSettings.TMDBSettings.QueryOptions.Page }
+            };
+
+            var requestUri = QueryHelpers.AddQueryString(query, queryParams);
+
+            requestUri = requestUri.Replace("/movie/", "/movie");
+
+            // Create a http client and execute the request
+            var client = _httpClient.CreateClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // data contract json serialiser
+                var dcjs = new DataContractJsonSerializer(typeof(MovieSearch));
+                // using keyword to manage the memory used by the response stream variable more aggressively than would otherwise be managed by normal garbage collection
+                using var responseStream = await response.Content.ReadAsStreamAsync();
+                movieSearch = (MovieSearch)dcjs.ReadObject(responseStream);
+                // take top 20 results
+                movieSearch.results = movieSearch.results.Take(20).ToArray();
+                movieSearch.results.ToList().ForEach(result => result.poster_path = $"{_appSettings.TMDBSettings.BaseImagePath}/{_appSettings.MovieProSettings.DefaultPosterSize}/{result.poster_path}");
+            }
+
+            return movieSearch;
+        }
+
         public async Task<MovieSearch> SearchMoviesAsync(MovieCategory category, int count)
         {
             // Create a default instance of MovieSearch class
@@ -129,5 +169,6 @@ namespace MoviePro.Services
 
             return requestUri;
         }
+
     }
 }

@@ -1,0 +1,14 @@
+﻿@using MoviePro.Models.TMDB
+@model MovieSearch
+
+<div class="row">
+    @foreach (var movie in Model.results)
+    {
+        <div class="card-body">
+            <h5 class="card-title clampTitle text-light">@movie.title</h5>
+            <p class="card-text clampOverview">@movie.overview</p>
+            <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+        </div>
+    }
+
+</div>

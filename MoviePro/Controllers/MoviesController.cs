@@ -65,6 +65,14 @@ namespace MoviePro.Controllers
             return View(movies);
         }
 
+        public async Task<IActionResult> SearchIndex(string searchTerm)
+        {
+            ViewData["SearchTerm"] = searchTerm;
+
+            var searchResults = await _tmdbMovieService.SearchMoviesAsync(searchTerm);
+            return View(searchResults);
+        }
+
         public async Task<IActionResult> Details(int? id, bool local = false)
         {
             if (id == null)

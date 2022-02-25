@@ -4,6 +4,12 @@
 @inject IImageService _imageService
 @model Movie
 
+<!-- Watch trailer button visibility--> 
+@{
+    string visibility = Model.TrailerUrl is null ? "invisible" : "visible";
+}
+
+
 <!-- Movie Info-->
 <div class="row">
     <div class="col-sm-12 col-md-3 mr-4">
@@ -12,7 +18,7 @@
         </div>
         <div class="row">
             <div class=" col-12 mt-2">
-                <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
+                <button class="btn btn-block btn-danger @visibility" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
             </div>
         </div>
         <div class="row mt-4">
@@ -200,7 +206,13 @@
         <div class="embed-responsive embed-responsive-16by9">
             @{
                 // Isolating a piece of data to use it as the embed source
-                var key = Model.TrailerUrl.Split("=").Last();
+                var key = "";    
+                
+                if (Model.TrailerUrl != null)
+                {
+                    key = Model.TrailerUrl.Split("=").Last();
+                };
+                
                 var source = $"https://www.youtube.com/embed/{key}";
             }
 
