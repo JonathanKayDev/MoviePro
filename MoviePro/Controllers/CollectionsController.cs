@@ -136,7 +136,7 @@ namespace MoviePro.Controllers
             var collection = await _context.Collection.FindAsync(id);
             _context.Collection.Remove(collection);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index","MovieCollections");
+            return RedirectToAction("Index","Collections");
         }
 
         private bool CollectionExists(int id)
