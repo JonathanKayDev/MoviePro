@@ -4,7 +4,7 @@
 @inject IImageService _imageService
 @inject IRemoteMovieService _tmdbMovieService;
 
-@*@model Movie*@
+@model List<Movie>
 
 <style>
     .twitter-typeahead{
@@ -60,7 +60,6 @@
     }
 </style>
 
-
 <div class="row justify-content-center">
     <div class="col-12">
         <h2 class="text-light text-center">Discover & Import Movies</h2>
@@ -83,7 +82,26 @@
     <div class="col-12">
         <hr class="hr-blue" />  
     </div>
-
+    <div class="row">
+        <div class="col">
+            <h2 class="library-titles">IMPORTED MOVIES</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var movie in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card bg-transparent" style="width: 100%;">
+                    <img src="@_imageService.DecodeImage(movie.Poster, movie.PosterType)" class="card-img-top" alt="Movie Poster">
+                    <div class="card-body">
+                    <h5 class="card-title clampTitle text-light">@movie.Title</h5>
+                    <p class="card-text clampOverview">@movie.Overview</p>
+                        <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.MovieId" asp-route-local="true" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 
