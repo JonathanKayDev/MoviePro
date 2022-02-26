@@ -7,6 +7,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    background-color:black;
 }
 
 p {
@@ -155,10 +156,10 @@ a:focus, a:hover {
 
 #preloader {
     /*  background: #1f2532;*/
-    background-color: rgba(31,37,50, 0.5); 
+    background-color: rgba(31,37,50, 0.15); 
     height: 100%;
     /*  opacity: 0.5;*/
-    filter: alpha(opacity=100);
+    /*filter: alpha(opacity=100);*/
     position: fixed;
     text-align: center;
     width: 100%;

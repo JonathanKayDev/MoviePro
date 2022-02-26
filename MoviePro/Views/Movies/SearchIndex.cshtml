@@ -1,14 +1,27 @@
 ﻿@using MoviePro.Models.TMDB
 @model MovieSearch
 
-<div class="row">
-    @foreach (var movie in Model.results)
-    {
-        <div class="card-body">
-            <h5 class="card-title clampTitle text-light">@movie.title</h5>
-            <p class="card-text clampOverview">@movie.overview</p>
-            <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+<!-- Results -->
+<section class="px-4">
+    <div class="row">
+        <div class="col">
+            <h2 class="library-titles">SEARCH RESULTS <span class="h5 color-gray">(TOP 20)</span></h2>
+            <hr class="hr-blue"/>
         </div>
-    }
-
-</div>
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var movie in Model.results)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card bg-transparent" style="width: 100%;">
+                    <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                    <div class="card-body">
+                    <h5 class="card-title clampTitle text-light">@movie.title</h5>
+                    <p class="card-text clampOverview">@movie.overview</p>
+                        <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

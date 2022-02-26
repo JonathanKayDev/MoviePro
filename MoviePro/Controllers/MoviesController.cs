@@ -69,6 +69,12 @@ namespace MoviePro.Controllers
         {
             ViewData["SearchTerm"] = searchTerm;
 
+            // ToDo - replace with validation and alert to not allow empty search bar
+            if (searchTerm == null)
+            {
+               return RedirectToAction("Index","Home");
+            }
+
             var searchResults = await _tmdbMovieService.SearchMoviesAsync(searchTerm);
             return View(searchResults);
         }
