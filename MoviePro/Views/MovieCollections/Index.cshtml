@@ -25,20 +25,21 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-5">
-                            <h3>IN COLLECTION</h3>
-                            <select class="btn-block" name="InCollectionValues" id="InCollectionList" multiple></select>
-                            <button name="Up" class="btn mt-2" style="width: 40%">Up</button>
-                            <button name="Down" class="btn mt-2" style="width: 40%">Down</button>
+                            <h3 class="text-light">IN COLLECTION</h3>
+                            <select class="btn-block" id="IdsInCollection" name="InCollectionValues"  multiple asp-items="ViewBag.IdsInCollection"></select>
+                            <button type="button" name="Up" class="btn mt-2" style="width: 40%">Up</button>
+                            <button type="button" name="Down" class="btn mt-2" style="width: 40%">Down</button>
                         </div>
                         <div class="col-2">
-                            <button name="AllOut" class="btn-block mt-4">>></button>
-                            <button name="SelectedOut" class="btn-block">></button>
-                            <button name="AllIn" class="btn-block"><</button>
-                            <button name="SelectedIn" class="btn-block"><<</button>
+                            @*<button name="AllOut" class="btn-block mt-4">>></button>*@
+                            <button type="button" onclick="RemoveMovie()" class="btn-block">></button>
+                            @*<button name="AllIn" class="btn-block"><</button>*@
+                            <button type="button" onclick="AddMovie()" class="btn-block"><</button>
                         </div>
                         <div class="col-5">
-                            <h3>NOT IN COLLECTION</h3>
-                            <select class="btn-block" name="NotInCollectionValues" id="NotInCollectionList" multiple></select>
+                            <h3 class="text-light">NOT IN COLLECTION</h3>
+                            <select class="btn-block" id="IdsNotInCollection"  name="NotInCollectionValues" multiple asp-items="ViewBag.IdsNotInCollection"></select>
+                            
                         </div>
                     </div>
                 </div>
@@ -81,3 +82,7 @@
     </div>
   </div>
 </div>
+
+@section Scripts{
+    <script src="~/js/custom.js"></script>
+}

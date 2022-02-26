@@ -1,7 +1,6 @@
-﻿$(document).ready(function () {
-
-
+﻿
     /*-------------------- Movie Import --------------------*/
+
     if (typeof query !== 'undefined') {
         // Confiugre Bloodhound
         let movieList = new Bloodhound({
@@ -54,5 +53,41 @@
         })
     }
 
+    function AddMovie() {
+        // Get a referene to the Movie input elements
+        let inCollectionList = document.getElementById("IdsInCollection");
+        let notInCollectionList = document.getElementById("IdsNotInCollection");
+        var selectedMovie = notInCollectionList.options[notInCollectionList.selectedIndex];
+
+        if (notInCollectionList.selectedIndex == -1) {
+            /*ToDo - alert user need to make a seelection first*/
+            return true;
+        }
+
+        inCollectionList.append(selectedMovie);
+        //inCollectionList.select(-1);
+        //notInCollectionList.remove(selectedMovie);
+
+        return true;
+    }
+
+    function RemoveMovie() {
+        // Get a referene to the Movie input elements
+        let inCollectionList = document.getElementById("IdsInCollection");
+        let notInCollectionList = document.getElementById("IdsNotInCollection");
+        var selectedMovie = inCollectionList.options[inCollectionList.selectedIndex];
+
+        if (inCollectionList.selectedIndex == -1) {
+            /*ToDo - alert user need to make a seelection first*/
+            return true;
+        }
+
+        notInCollectionList.append(selectedMovie);
+        //notInCollectionList.select(-1);
+        //inCollectionList.remove(selectedMovie);
+
+        return true;
+    }
+
+
    
-});
