@@ -105,6 +105,25 @@ namespace MoviePro.Controllers
             return View(collection);
         }
 
+        public async Task<IActionResult> Details(int? id)
+        {
+            // Collection title for View
+            var collection = _context.Collection.FirstOrDefault(c => c.Id == id).Name;
+            ViewData["CollectionTitle"] = collection;
+
+            var movieIdsInCollection = await _context.MovieCollection
+                                                   .Where(m => m.CollectionId == id)
+                                                   .OrderBy(m => m.Order)
+                                                   .Select(m => m.MovieId)
+                                                   .ToListAsync();
+
+            var moviesInCollection = new List<Movie>();
+            // For each id in collection add to new list
+            movieIdsInCollection.ForEach(movieId => moviesInCollection.Add(_context.Movie.Find(movieId)));
+            
+            return View(moviesInCollection);
+        }
+
         // GET: Collections/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
