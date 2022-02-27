@@ -47,7 +47,7 @@
                 <span class="text-light">Director:</span> 
                 <br />
                 <!-- ToDo: bug, does not get director-->
-                <span class="text-muted">@Model.Crew.Where(c => c.Department == "Directing").FirstOrDefault()</span>
+                <span class="text-muted">@Model.Crew.Where(c => c.Department == "Directing").FirstOrDefault().Name</span>
             </div>
         </div>
         <div class="row mt-4">
