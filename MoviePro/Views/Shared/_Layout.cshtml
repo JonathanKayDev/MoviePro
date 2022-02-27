@@ -99,23 +99,10 @@ Fixed Navigation
                     <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    Drop down
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="index.html">Homepage 1</a>
-                                    <a class="dropdown-item" href="index-2.html">Homepage 2</a>
-                                </div>
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="service.html">Library</a>
+                                <a class="nav-link" asp-action="Library" asp-controller="Movies">Library</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -123,9 +110,11 @@ Fixed Navigation
                                     Admin Pages
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="index.html">Homepage 1</a>
-                                    <a class="dropdown-item" href="index-2.html">Homepage 2</a>
-                                </div>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Collections">Collections</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="MovieCollections">Manage Collections</a>
+                                    <a class="dropdown-item" asp-action="Import" asp-controller="Movies">Import Movies</a>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
                             </li>
                         </ul>
                     </div>
