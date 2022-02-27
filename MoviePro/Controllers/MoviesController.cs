@@ -25,7 +25,7 @@ namespace MoviePro.Controllers
             _tmdbMovieService = tmdbMovieService;
             _tmdbMappingService = tmdbMappingService;
         }
-
+        
         public async Task<IActionResult> Import()
         {
             var movies = await _context.Movie.ToListAsync();

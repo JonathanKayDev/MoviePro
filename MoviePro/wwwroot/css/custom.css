@@ -62,6 +62,10 @@
     color: #007bff;
 }
 
+.pink-titles {
+    color: #f0326b;
+}
+
 .text-bg {
     background-color: rgba(31, 37, 50,0.75) !important;
 }

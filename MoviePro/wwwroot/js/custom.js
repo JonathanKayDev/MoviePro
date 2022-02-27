@@ -1,4 +1,4 @@
-﻿
+﻿$(document).ready(function () {
     /*-------------------- Movie Import --------------------*/
 
     if (typeof query !== 'undefined') {
@@ -52,6 +52,10 @@
             $('#movie-id').val(item.value);
         })
     }
+
+});
+
+    /*-------------------- Movie Collection --------------------*/
 
     function AddMovie() {
         // Get a referene to the Movie input elements
