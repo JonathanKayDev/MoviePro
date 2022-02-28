@@ -97,14 +97,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div id="carouselUpcoming" class="carousel slide" data-ride="carousel">
+                        <div id="carouselUp" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner">
                                 @{
                                     classText = "active";
                                     for (var slide = 0; slide <= 3; slide++)
                                     {
                                         <div class="carousel-item @classText">
-                                            <div class="row justify-content-center">
+                                            <div class="row">
                                                 @foreach (var movie in Model.Upcoming.results.Skip(slide*4).Take(4))
                                                 {
                                                     <div class="col-sm-3 mb-2">
@@ -113,7 +113,9 @@
                                                             <div class="card-body">
                                                             <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                                             <p class="card-text clampOverview">@movie.overview</p>
+                                                            <div class="d-grid gap-2">
                                                                 <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -122,13 +124,13 @@
                                         </div>
                                         classText = "";
                                     }
-                            }
+                                }
                         </div>
-                          <a class="carousel-control-prev" href="#carouselUpcoming" role="button" data-slide="prev">
+                          <a class="carousel-control-prev" href="#carouselUp" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                           </a>
-                          <a class="carousel-control-next" href="#carouselUpcoming" role="button" data-slide="next">
+                          <a class="carousel-control-next" href="#carouselUp" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                           </a>
@@ -175,7 +177,7 @@
                                         </div>
                                         classText = "";
                                     }
-                            }
+                                }
                         </div>
                           <a class="carousel-control-prev" href="#carouselNowPlaying" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

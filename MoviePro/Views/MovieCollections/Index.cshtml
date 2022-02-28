@@ -4,8 +4,8 @@
 <!-- Manage Collections -->
 <div class="container" style="width: 75%;">
     <div class="row justify-content-center">
-        <div class="col">
-            <h2 class="library-titles">MANAGE COLLECTIONS</h2>
+        <div class="col text-center">
+            <h2 class="library-titles">Manage Collections</h2>
             <hr class="hr-blue"/>
         </div>
     </div>
@@ -28,14 +28,14 @@
                             <h3 class="text-light">IN COLLECTION</h3>
                             @*<select class="btn-block" id="IdsInCollection" name="InCollectionValues"  multiple asp-items="ViewBag.IdsInCollection"></select>*@
                             @Html.ListBox("idsInCollection", @ViewBag.IdsInCollection, new { @class="btn-block", @id="IdsInCollection"});
-                            <button type="button" name="Up" class="btn mt-2" style="width: 40%">Up</button>
-                            <button type="button" name="Down" class="btn mt-2" style="width: 40%">Down</button>
+                            <button type="button" name="Up" class="btn mt-2 btn-secondary" style="width: 40%">Up</button>
+                            <button type="button" name="Down" class="btn mt-2 btn-secondary" style="width: 40%">Down</button>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 align-self-center">
                             @*<button name="AllOut" class="btn-block mt-4">>></button>*@
-                            <button type="button" onclick="RemoveMovie()" class="btn-block">></button>
+                            <button type="button" onclick="RemoveMovie()" class="btn btn-block btn-secondary">></button>
                             @*<button name="AllIn" class="btn-block"><</button>*@
-                            <button type="button" onclick="AddMovie()" class="btn-block"><</button>
+                            <button type="button" onclick="AddMovie()" class="btn btn-block btn-secondary"><</button>
                         </div>
                         <div class="col-5">
                             <h3 class="text-light">NOT IN COLLECTION</h3>
