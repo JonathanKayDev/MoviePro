@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MoviePro.Enums
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -6,36 +7,29 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        @if (@User.IsInRole(Role.Administrator.ToString()))
+        {
+            <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello Jonathan!</a>
+        }
+        else
+        {
+            <a class="nav-link">Hello Demo Admin!</a>
+        }
+
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            <div class="align-middle">
+                <button  type="submit" class="nav-link btn btn-link btn-logout" style="vertical-align:middle">Logout</button>
+            </div>
         </form>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
 @*        <a class="nav-link text-light" data-toggle="modal" data-target="#login">Login</a>*@
     </li>
 }
 </ul>
-
-<!-- Modals-->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="collectionLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Movie Collection</h5>
-      </div>
-      <div class="modal-body" id="collectionForm">
-        <p>HI!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

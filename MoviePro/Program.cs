@@ -6,7 +6,6 @@ using MoviePro.Services;
 using MoviePro.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 var connectionString = ConnectionService.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
