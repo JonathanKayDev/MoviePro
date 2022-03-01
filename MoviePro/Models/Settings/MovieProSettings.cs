@@ -9,6 +9,7 @@
         public string? DefaultCastImage { get; set; }
         public DefaultCollection? DefaultCollection { get; set; }
         public DefaultCredentials? DefaultCredentials { get; set; }
+        public DemoAdminCredentials? DemoAdminCredentials { get; set; }
     }
 
     public class DefaultCollection
@@ -18,6 +19,13 @@
     }
 
     public class DefaultCredentials
+    {
+        public string Role { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class DemoAdminCredentials
     {
         public string Role { get; set; }
         public string Email { get; set; }

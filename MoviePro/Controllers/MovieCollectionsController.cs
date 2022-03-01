@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoviePro.Data;
@@ -15,6 +16,7 @@ namespace MoviePro.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator, DemoAdmin")]
         public async Task<IActionResult> Index(int? id)
         {
             // if no id provided, default to the ALL collection
@@ -47,6 +49,7 @@ namespace MoviePro.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(int id, List<int> idsInCollection)

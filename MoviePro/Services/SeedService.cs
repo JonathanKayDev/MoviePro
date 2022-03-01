@@ -44,8 +44,10 @@ namespace MoviePro.Services
 
             // Create adminitrator role
             var adminRole = _appSettings.MovieProSettings.DefaultCredentials.Role;
-
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
+
+            var demoAdminRole = _appSettings.MovieProSettings.DemoAdminCredentials.Role;
+            await _roleManager.CreateAsync(new IdentityRole(demoAdminRole));
         }
 
         private async Task SeedUsersAsync()
@@ -55,6 +57,7 @@ namespace MoviePro.Services
                 return;
             }
 
+            // Admin
             var credentials = _appSettings.MovieProSettings.DefaultCredentials;
             var newUser = new IdentityUser()
             {
@@ -65,6 +68,18 @@ namespace MoviePro.Services
 
             await _userManager.CreateAsync(newUser, credentials.Password);
             await _userManager.AddToRoleAsync(newUser, credentials.Role);
+
+            // Demo Admin
+            var demoCredentials = _appSettings.MovieProSettings.DemoAdminCredentials;
+            var newDemoUser = new IdentityUser()
+            {
+                Email = demoCredentials.Email,
+                UserName = demoCredentials.Email,
+                EmailConfirmed = true
+            };
+
+            await _userManager.CreateAsync(newDemoUser, demoCredentials.Password);
+            await _userManager.AddToRoleAsync(newDemoUser, demoCredentials.Role);
         }
 
         private async Task SeedCollections()

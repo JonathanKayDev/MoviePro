@@ -64,7 +64,7 @@ app.MapRazorPages();
 //
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-// call SeedService
+// call SeedService, this must be after setswitch above
 var dataService = app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedService>();
 await dataService.ManageDataAsync();
 

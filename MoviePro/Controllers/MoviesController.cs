@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -25,13 +26,15 @@ namespace MoviePro.Controllers
             _tmdbMovieService = tmdbMovieService;
             _tmdbMappingService = tmdbMappingService;
         }
-        
+
+        [Authorize(Roles = "Administrator, DemoAdmin")]
         public async Task<IActionResult> Import()
         {
             var movies = await _context.Movie.ToListAsync();
             return View(movies);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Import(int id)
@@ -208,6 +211,7 @@ namespace MoviePro.Controllers
         }
 
         // GET: Temp/Delete/5
+        [Authorize(Roles = "Administrator, DemoAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -226,6 +230,7 @@ namespace MoviePro.Controllers
         }
 
         // POST: Temp/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
