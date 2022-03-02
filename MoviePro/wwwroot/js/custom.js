@@ -55,43 +55,89 @@
 
 });
 
-    /*-------------------- Movie Collection --------------------*/
+/*-------------------- Movie Collection --------------------*/
 
-    function AddMovie() {
-        // Get a referene to the Movie input elements
-        let inCollectionList = document.getElementById("IdsInCollection");
-        let notInCollectionList = document.getElementById("IdsNotInCollection");
-        var selectedMovie = notInCollectionList.options[notInCollectionList.selectedIndex];
+// All in collection listbox needs to be selected to save each movie
+$('#CollectionsForm').on('submit', SelectAllMovies);
 
-        if (notInCollectionList.selectedIndex == -1) {
-            /*ToDo - alert user need to make a seelection first*/
-            return true;
-        }
 
-        inCollectionList.append(selectedMovie);
-        //inCollectionList.select(-1);
-        //notInCollectionList.remove(selectedMovie);
+function AddMovie() {
+    // Get a referene to the Movie input elements
+    let inCollectionList = document.getElementById("idsInCollection");
+    let notInCollectionList = document.getElementById("idsNotInCollection");
+    var selectedMovie = notInCollectionList.options[notInCollectionList.selectedIndex];
 
+    if (notInCollectionList.selectedIndex == -1) {
+        /*ToDo - alert user need to make a seelection first*/
         return true;
     }
 
-    function RemoveMovie() {
-        // Get a referene to the Movie input elements
-        let inCollectionList = document.getElementById("IdsInCollection");
-        let notInCollectionList = document.getElementById("IdsNotInCollection");
-        var selectedMovie = inCollectionList.options[inCollectionList.selectedIndex];
+    inCollectionList.append(selectedMovie);
+    //inCollectionList.select(-1);
+    //notInCollectionList.remove(selectedMovie);
 
-        if (inCollectionList.selectedIndex == -1) {
-            /*ToDo - alert user need to make a seelection first*/
-            return true;
-        }
+    return true;
+}
 
-        notInCollectionList.append(selectedMovie);
-        //notInCollectionList.select(-1);
-        //inCollectionList.remove(selectedMovie);
+function RemoveMovie() {
+    // Get a referene to the Movie input elements
+    let inCollectionList = document.getElementById("idsInCollection");
+    let notInCollectionList = document.getElementById("idsNotInCollection");
+    var selectedMovie = inCollectionList.options[inCollectionList.selectedIndex];
 
+    if (inCollectionList.selectedIndex == -1) {
+        /*ToDo - alert user need to make a seelection first*/
         return true;
     }
 
+    notInCollectionList.append(selectedMovie);
+    //notInCollectionList.select(-1);
+    //inCollectionList.remove(selectedMovie);
+
+    return true;
+}
+
+function MovieUp() {
+    // Get a referene to the Movie input elements
+    let inCollectionList = document.getElementById("idsInCollection");
+
+    if (inCollectionList.selectedIndex == 0) {
+        return true;
+    }
+    // Get selected movie and movie directly above in list
+    var selectedMovie = inCollectionList.options[inCollectionList.selectedIndex];
+    var aboveMovie = inCollectionList.options[inCollectionList.selectedIndex - 1];
+
+    //swap movies
+    inCollectionList.insertBefore(selectedMovie, aboveMovie);
+
+
+    return true
+}
+
+function MovieDown() {
+    // Get a referene to the Movie input elements
+    let inCollectionList = document.getElementById("idsInCollection");
+
+    if (inCollectionList.selectedIndex == inCollectionList.options.length) {
+        return true;
+    }
+    // Get selected movie and movie directly above in list
+    var selectedMovie = inCollectionList.options[inCollectionList.selectedIndex];
+    var belowMovie = inCollectionList.options[inCollectionList.selectedIndex + 1];
+
+    //swap movies
+    inCollectionList.insertBefore(belowMovie, selectedMovie);
+
+    return true
+}
+
+function SelectAllMovies() {
+    let inCollectionList = document.getElementById("idsInCollection");
+
+    for (var i = 0; i < inCollectionList.options.length; i++) {
+        inCollectionList.options[i].selected = "selected";
+    }
+}
 
    

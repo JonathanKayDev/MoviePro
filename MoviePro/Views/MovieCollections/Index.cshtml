@@ -11,7 +11,7 @@
     </div>
     <div class="row text-bg justify-content-between pt-3">
         <div class="col">
-            <form asp-action="Index">
+            <form asp-action="Index" id="CollectionsForm">
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
@@ -26,21 +26,17 @@
                     <div class="row">
                         <div class="col-5">
                             <h3 class="text-light">IN COLLECTION</h3>
-                            @*<select class="btn-block" id="IdsInCollection" name="InCollectionValues"  multiple asp-items="ViewBag.IdsInCollection"></select>*@
-                            @Html.ListBox("idsInCollection", @ViewBag.IdsInCollection, new { @class="btn-block", @id="IdsInCollection"});
-                            <button type="button" name="Up" class="btn mt-2 btn-secondary" style="width: 40%">Up</button>
-                            <button type="button" name="Down" class="btn mt-2 btn-secondary" style="width: 40%">Down</button>
+                            @Html.ListBox("idsInCollection", @ViewBag.IdsInCollection, new { @class="btn-block", @id="idsInCollection"});
+                            <button type="button" onclick="MovieUp()" name="Up" class="btn mt-2 btn-secondary" style="width: 40%">Up</button>
+                            <button type="button" onclick="MovieDown()" name="Down" class="btn mt-2 btn-secondary" style="width: 40%">Down</button>
                         </div>
                         <div class="col-2 align-self-center">
-                            @*<button name="AllOut" class="btn-block mt-4">>></button>*@
                             <button type="button" onclick="RemoveMovie()" class="btn btn-block btn-secondary">></button>
-                            @*<button name="AllIn" class="btn-block"><</button>*@
                             <button type="button" onclick="AddMovie()" class="btn btn-block btn-secondary"><</button>
                         </div>
                         <div class="col-5">
                             <h3 class="text-light">NOT IN COLLECTION</h3>
-                            @*<select class="btn-block" id="IdsNotInCollection"  name="NotInCollectionValues" multiple asp-items="ViewBag.IdsNotInCollection"></select>*@
-                            @Html.ListBox("idsNotInCollection", @ViewBag.IdsNotInCollection, new { @class="btn-block", @id="IdsNotInCollection"});
+                            @Html.ListBox("idsNotInCollection", @ViewBag.IdsNotInCollection, new { @class="btn-block", @id="idsNotInCollection"});
                         </div>
                     </div>
                 </div>
@@ -73,7 +69,7 @@
                 <textarea asp-for="Description" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-sm btn-block btn-primary mt-2">ADD</button>
+                <button type="submit" onclick="SelectAllMovies()" class="btn btn-sm btn-block btn-primary mt-2">ADD</button>
             </div>
         </form>
       </div>

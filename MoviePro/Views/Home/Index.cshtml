@@ -48,7 +48,7 @@
                                         {
                                             <div class="carousel-item @classText">
                                                 <div class="row justify-content-center">
-                                                    @foreach (var movie in collection.MovieCollections.Skip(slide * 4).Take(4))
+                                                    @foreach (var movie in collection.MovieCollections.OrderBy(m => m.Order).Skip(slide * 4).Take(4))
                                                     {
                                                         <div class="col-sm-3 mb-2">
                                                             <div class="card" style="width: 15.5rem;">
