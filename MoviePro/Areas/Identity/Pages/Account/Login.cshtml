@@ -6,26 +6,27 @@
 }
 
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <h1>@ViewData["Title"]</h1>
+    <div class="col-md-6 text-bg">
+        <h1 class="library-titles">@ViewData["Title"]</h1>
         <section>
+            <!-- Admin login-->
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2 class="text-grey">Use a local account to log in.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                    <label asp-for="Input.Email" class="form-label"></label>
+                    <label asp-for="Input.Email" class="form-label text-grey"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                    <label asp-for="Input.Password" class="form-label"></label>
+                    <label asp-for="Input.Password" class="form-label text-grey"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
+                    <div class="checkbox ml-4">
+                        <label asp-for="Input.RememberMe" class="form-label text-grey">
                             <input class="form-check-input" asp-for="Input.RememberMe" />
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label>
@@ -39,10 +40,27 @@
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
                 </div>
-                <div>
-                    <a type="button" class="w-100 btn btn-lg btn-danger text-light">Log in as Demo Admin</a>
-                </div>
             </form>
+            <hr class="hr-blue mt-4"/>
+            <!-- Demo Admin login-->
+            <h1 class="pink-titles">Demo account</h1>
+            <form id="demoAccount" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control" value="demoadminjkmoviepro@mailinator.com" hidden="true"/>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.Password" class="form-control" value="DemoAdmin12#" hidden="true"/>
+                </div>
+                <div>
+                </div>
+                <div>
+                    <button id="login-demo-submit" type="submit" class="w-100 btn btn-lg btn-danger text-light mt-4 mb-4">Log in as Demo Admin</button>
+                </div>
+@*                <div>
+                    <a type="button" class="w-100 btn btn-lg btn-danger text-light">Log in as Demo Admin</a>
+                </div>*@
+            </form>        
         </section>
     </div>
 </div>
