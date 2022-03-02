@@ -195,10 +195,10 @@
 <!-- Modals-->
 <div class="modal fade" id="trailer" tabindex="-1" role="dialog" aria-labelledby="trailerLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content modal-bg">
       <div class="modal-header">
-        <h5 class="modal-title">@Model.Title</h5>
-        <button id="trailer-close" type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title library-titles">@Model.Title</h5>
+        <button id="trailer-close" type="button" class="btn btn-close btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -228,3 +228,12 @@
     </div>
   </div>
 </div>
+
+@section Scripts{
+   @*auto stop trailer on modal close*@
+    <script>
+        $("#trailer").on('hidden.bs.modal', function (e) {
+            $("#trailer iframe").attr("src", $("#trailer iframe").attr("src"));
+        });
+    </script>
+}

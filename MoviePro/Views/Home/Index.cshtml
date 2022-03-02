@@ -50,9 +50,16 @@
                                                 <div class="row justify-content-center">
                                                     @foreach (var movie in collection.MovieCollections.OrderBy(m => m.Order).Skip(slide * 4).Take(4))
                                                     {
-                                                        <div class="col-sm-3 mb-2">
-                                                            <div class="card" style="width: 15.5rem;">
+                                                        <div class="col mb-2">
+                                                            <div class="card" style="max-width: 15.5rem;">
+                                                            <div class="poster-link">
                                                                 <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
+                                                                <div class="poster-link-container align-items-center">
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-secondary fw-bold">More Info</a>
+                                                                </div>
+                                                            </div>
+
+                                                                
                                                                 <div class="card-body">
                                                                     <h5 class="card-title clampTitle text-light">@movie.Movie.Title</h5>
                                                                     <p class="card-text clampOverview">@movie.Movie.Overview</p>
