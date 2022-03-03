@@ -26,7 +26,10 @@
                     <h5 class="card-title clampTitle text-light">@movie.Title</h5>
                     <p class="card-text clampOverview">@movie.Overview</p>
                         <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.MovieId" asp-route-local="true" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
-                        <a asp-action="Delete" asp-controller="Movies" asp-route-id="@movie.Id" asp-route-local="true" class="btn btn-lg btn-block btn-danger fw-bold">Delete</a>
+                            @if (User.IsInRole("Administrator")||User.IsInRole("DemoAdmin"))
+                            {
+                                <a asp-action="Delete" asp-controller="Movies" asp-route-id="@movie.Id" asp-route-local="true" class="btn btn-lg btn-block btn-danger fw-bold">Delete</a>
+                            }
                     </div>
                 </div>
             </div>

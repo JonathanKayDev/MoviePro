@@ -39,7 +39,7 @@
                     <section class="px-4">
                         <div class="row">
                             <div class="d-grid gap-2">
-                                <h2 class="library-titles">RANDOM</h2>
+                                <h2 class="library-titles">RANDOM PICKS</h2>
                             </div>
                         </div>
                         <div class="row">
@@ -54,7 +54,7 @@
                                 </ol>
                                 <!--/.Indicators-->
                                 <div class="carousel-inner">      
-                                    @for (var slide = 0; slide <= 3; slide++)
+                                    @for (var slide = 0; slide <= 5; slide++)
                                     {
                                         <div class="carousel-item @classText">
                                             <div class="row justify-content-center">
@@ -65,7 +65,7 @@
                                                         <div class="poster-link">
                                                             <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
                                                             <div class="poster-link-container align-items-center">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-secondary fw-bold">More Info</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-secondary fw-bold"><i class="fa-solid fa-square-info"></i></a>
                                                             </div>
                                                         </div>
 
