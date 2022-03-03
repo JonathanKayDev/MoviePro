@@ -45,6 +45,42 @@
     overflow: hidden;
 }
 
+/*@media (min-width: 218px) {
+    .carousel-large {
+        visibility: hidden;
+    }
+    .carousel-small {
+        visibility: visible;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-large {
+        visibility: visible;
+    }
+    .carousel-small {
+        visibility: hidden;
+    }
+}*/
+ol.carousel-indicators {
+    bottom: -20px;
+}
+
+    ol.carousel-indicators li,
+    ol.carousel-indicators li.active {
+        border-radius: .1rem;
+        border: 0;
+        height: 0.5rem;
+    }
+
+        ol.carousel-indicators li.active {
+            background: #f0326b;
+            height: 0.5rem;
+        }
+        ol.carousel-indicators li {
+            height: 0.5rem;
+        }
+
 .h5.card-title {
     height: 2.5rem;
 }
