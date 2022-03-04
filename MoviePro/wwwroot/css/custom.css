@@ -45,23 +45,6 @@
     overflow: hidden;
 }
 
-/*@media (min-width: 218px) {
-    .carousel-large {
-        visibility: hidden;
-    }
-    .carousel-small {
-        visibility: visible;
-    }
-}
-
-@media (min-width: 768px) {
-    .carousel-large {
-        visibility: visible;
-    }
-    .carousel-small {
-        visibility: hidden;
-    }
-}*/
 ol.carousel-indicators {
     bottom: -20px;
 }
@@ -174,4 +157,20 @@ ol.carousel-indicators {
 
 .link-info {
     color: whitesmoke;
+}
+
+/* Page link */
+a.page-link {
+    background-color: rgba(31, 37, 50,1) !important;
+    border-color: transparent !important;
+}
+
+a.page-link:hover {
+    border-color: #f0326b !important;
+    color: #f0326b !important;
+}
+
+span.page-link {
+    background-color: #f0326b !important;
+    border-color: #f0326b !important;
 }

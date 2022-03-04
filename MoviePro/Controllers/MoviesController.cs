@@ -7,6 +7,7 @@ using MoviePro.Data;
 using MoviePro.Models.Database;
 using MoviePro.Models.Settings;
 using MoviePro.Services.Interfaces;
+using X.PagedList;
 
 namespace MoviePro.Controllers
 {
@@ -62,9 +63,12 @@ namespace MoviePro.Controllers
             return RedirectToAction("Import");
         }
 
-        public async Task<IActionResult> Library()
+        public async Task<IActionResult> Library(int? page)
         {
-            var movies = await _context.Movie.ToListAsync();
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+
+            var movies = await _context.Movie.ToPagedListAsync(pageNumber, pageSize);
             return View(movies);
         }
 
