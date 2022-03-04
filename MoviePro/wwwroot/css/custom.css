@@ -180,3 +180,8 @@ span.twitter-typeahead {
     flex: 1 0 auto;
     width: auto;
 }
+
+/* Navigation */
+.text-clickable:hover {
+    cursor: pointer;
+}
