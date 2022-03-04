@@ -171,3 +171,7 @@ ol.carousel-indicators {
 .poster-link:hover .poster-link-container {
     opacity: 1;
 }
+
+.link-info {
+    color: whitesmoke;
+}

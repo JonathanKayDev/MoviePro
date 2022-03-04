@@ -37,20 +37,20 @@
                     var allCollection = @Model.CustomCollections.First();
                     var random = new Random();
                     <section class="px-4">
-                        <div class="row">
+                        <div class="row justify-content-center justify-content-md-start">
                             <div class="d-grid gap-2">
                                 <h2 class="library-titles">RANDOM PICKS</h2>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row justify-content-center justify-content-md-start">
                             <div id="carouselRand" class="carousel slide carousel-multi-item" data-ride="carousel">
                                 <!--Indicators-->
                                 <ol class="carousel-indicators">
                                   <li data-target="#carouselRand" data-slide-to="0" class="active"></li>
                                   <li data-target="#carouselRand" data-slide-to="1"></li>
                                   <li data-target="#carouselRand" data-slide-to="2"></li>
+                                  <li data-target="#carouselRand" data-slide-to="3"></li>
                                   <li data-target="#carouselRand" data-slide-to="4"></li>
-                                  <li data-target="#carouselRand" data-slide-to="5"></li>
                                 </ol>
                                 <!--/.Indicators-->
                                 <div class="carousel-inner">      
@@ -65,7 +65,7 @@
                                                         <div class="poster-link">
                                                             <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
                                                             <div class="poster-link-container align-items-center">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-secondary fw-bold"><i class="fa-solid fa-square-info"></i></a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
                                                             </div>
                                                         </div>
 
@@ -73,7 +73,7 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title clampTitle text-light">@movie.Movie.Title</h5>
                                                                 <p class="card-text clampOverview">@movie.Movie.Overview</p>
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -106,12 +106,12 @@
                         carouselCust = "carousel" + collection.Id;
                         <!-- Custom collection -->
                         <section class="px-4">
-                            <div class="row">
+                            <div class="row justify-content-center justify-content-md-start">
                                 <div class="d-grid gap-2">
                                     <h2 class="library-titles">@collection.Name.ToUpper()</h2>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row justify-content-center justify-content-md-start">
                                 <div id="@carouselCust" class="carousel slide" data-ride="carousel">
                                     <!--Indicators-->
                                     <ol class="carousel-indicators">
@@ -134,7 +134,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-secondary fw-bold">More Info</a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
                                                                 </div>
                                                             </div>
 
@@ -142,7 +142,7 @@
                                                                 <div class="card-body">
                                                                     <h5 class="card-title clampTitle text-light">@movie.Movie.Title</h5>
                                                                     <p class="card-text clampOverview">@movie.Movie.Overview</p>
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -171,12 +171,12 @@
                 <!-- TMDB MOVIES-->
                 <!-- Upcoming -->
                 <section class="px-4">
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div class="d-grid gap-2">
                             <h2 class="library-titles">UPCOMING</h2>
                         </div>
                     </div>
-                    <div class="row mb-4">
+                    <div class="row mb-4 justify-content-center justify-content-md-start">
                         <div id="carouselUp" class="carousel slide" data-ride="carousel">
                             <!--Indicators-->
                             <ol class="carousel-indicators">
@@ -197,12 +197,17 @@
                                                 {
                                                     <div class="col mb-2 @sizeClass">
                                                         <div class="card" style="max-width: 15.5rem;">
-                                                            <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                            <div class="poster-link">
+                                                                <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                                <div class="poster-link-container align-items-center">
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                </div>
+                                                            </div>
                                                             <div class="card-body">
                                                             <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                                             <p class="card-text clampOverview">@movie.overview</p>
                                                             <div class="d-grid gap-2">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                             </div>
                                                             </div>
                                                         </div>
@@ -226,12 +231,12 @@
                             <hr class="hr-blue"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div class="d-grid gap-2">
                             <h2 class="library-titles">NOW PLAYING</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div id="carouselNowPlaying" class="carousel slide" data-ride="carousel">
                             <!--Indicators-->
                             <ol class="carousel-indicators">
@@ -252,12 +257,17 @@
                                                 {
                                                     <div class="col mb-2 @sizeClass">
                                                         <div class="card" style="max-width: 15.5rem;">
-                                                            <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                            <div class="poster-link">
+                                                                <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                                <div class="poster-link-container align-items-center">
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                </div>
+                                                            </div>
                                                             <div class="card-body">
                                                             <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                                             <p class="card-text clampOverview">@movie.overview</p>
                                                             <div class="d-grid gap-2">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                             </div>
                                                             </div>
                                                         </div>
@@ -281,12 +291,12 @@
                             <hr class="hr-blue"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div class="d-grid gap-2">
                             <h2 class="library-titles">POPULAR</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div id="carouselPopular" class="carousel slide" data-ride="carousel">
                             <!--Indicators-->
                             <ol class="carousel-indicators">
@@ -307,12 +317,17 @@
                                                 {
                                                     <div class="col mb-2 @sizeClass">
                                                         <div class="card" style="max-width: 15.5rem;">
-                                                            <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                            <div class="poster-link">
+                                                                <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                                <div class="poster-link-container align-items-center">
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                </div>
+                                                            </div>
                                                             <div class="card-body">
                                                             <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                                             <p class="card-text clampOverview">@movie.overview</p>
                                                             <div class="d-grid gap-2">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                             </div>
                                                             </div>
                                                         </div>
@@ -336,12 +351,12 @@
                             <hr class="hr-blue"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div class="d-grid gap-2">
                             <h2 class="library-titles">TOP RATED</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center justify-content-md-start">
                         <div id="carouselTopRated" class="carousel slide" data-ride="carousel">
                             <!--Indicators-->
                             <ol class="carousel-indicators">
@@ -362,12 +377,17 @@
                                                 {
                                                     <div class="col mb-2 @sizeClass">
                                                         <div class="card" style="max-width: 15.5rem;">
-                                                            <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                            <div class="poster-link">
+                                                                <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
+                                                                <div class="poster-link-container align-items-center">
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                </div>
+                                                            </div>
                                                             <div class="card-body">
                                                             <h5 class="card-title clampTitle text-light">@movie.title</h5>
                                                             <p class="card-text clampOverview">@movie.overview</p>
                                                             <div class="d-grid gap-2">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-lg btn-block btn-primary fw-bold">Details</a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="btn btn-sm btn-block btn-primary fw-bold">Details</a>
                                                             </div>
                                                             </div>
                                                         </div>
