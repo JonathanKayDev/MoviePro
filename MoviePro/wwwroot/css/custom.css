@@ -174,3 +174,9 @@ span.page-link {
     background-color: #f0326b !important;
     border-color: #f0326b !important;
 }
+
+/* Typeahead Search */
+span.twitter-typeahead {
+    flex: 1 0 auto;
+    width: auto;
+}

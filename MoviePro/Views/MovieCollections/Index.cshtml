@@ -2,22 +2,22 @@
 @model Collection
 
 <!-- Manage Collections -->
-<div class="container" style="width: 75%;">
+<div class="container" style="width: 100%;">
     <div class="row justify-content-center">
         <div class="col text-center">
             <h2 class="library-titles">Manage Collections</h2>
             <hr class="hr-blue"/>
         </div>
     </div>
-    <div class="row text-bg justify-content-between pt-3">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-bg pt-3">
             <form asp-action="Index" id="CollectionsForm">
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             <select id="CollectionId" class="form-control" asp-items="ViewBag.CollectionId"></select>
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <button name="Add" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#collection">ADD</button>
                         </div>
                     </div>
@@ -25,17 +25,17 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-5">
-                            <h3 class="text-light">IN COLLECTION</h3>
+                            <h5 class="text-light">IN COLLECTION</h5>
                             @Html.ListBox("idsInCollection", @ViewBag.IdsInCollection, new { @class="btn-block", @id="idsInCollection"});
-                            <button type="button" onclick="MovieUp()" name="Up" class="btn mt-2 btn-secondary" style="width: 40%">Up</button>
-                            <button type="button" onclick="MovieDown()" name="Down" class="btn mt-2 btn-secondary" style="width: 40%">Down</button>
+                            <button type="button" onclick="MovieUp()" name="Up" class="btn btn-sm btn-secondary mt-3" style="width: 40%"><i class="fas fa-angle-up"></i></button>
+                            <button type="button" onclick="MovieDown()" name="Down" class="btn btn-sm btn-secondary mt-3" style="width: 40%"><i class="fas fa-angle-down"></i></button>
                         </div>
                         <div class="col-2 align-self-center">
-                            <button type="button" onclick="RemoveMovie()" class="btn btn-block btn-secondary">></button>
-                            <button type="button" onclick="AddMovie()" class="btn btn-block btn-secondary"><</button>
+                            <button type="button" onclick="RemoveMovie()" class="btn btn-sm btn-block btn-secondary"><i class="fas fa-angle-right"></i></button>
+                            <button type="button" onclick="AddMovie()" class="btn btn-sm btn-block btn-secondary"><i class="fas fa-angle-left"></i></button>
                         </div>
                         <div class="col-5">
-                            <h3 class="text-light">NOT IN COLLECTION</h3>
+                            <h5 class="text-light">NOT IN COLLECTION</h5>
                             @Html.ListBox("idsNotInCollection", @ViewBag.IdsNotInCollection, new { @class="btn-block", @id="idsNotInCollection"});
                         </div>
                     </div>
