@@ -8,61 +8,56 @@
     ViewData["Title"] = "Details";
 }
 
-<!-- Watch trailer button visibility--> 
+
 @{
+    <!-- Watch trailer button visibility--> 
     string visibility = Model.TrailerUrl is null ? "invisible" : "visible";
+    <!-- Director null check-->
+    var directorValue = Model.Crew.Where(c => c.Department == "Directing").FirstOrDefault();
+    string director = directorValue is null ? "-" : directorValue.Name;
 }
 
 
 <!-- Movie Info-->
-<div class="row px-2 justify-content-center">
+<div class="row justify-content-center">
+    <!-- Movie Poster and Info -->
     <div class="col-sm-12 col-md-3 mr-4">
         <div class="row">
-            <img src="@_imageService.DecodeImage(Model.Poster, Model.PosterType)" class="w-100" alt="Poster Image"/>
-        </div>
-        <div class="row">
-            <div class=" col-12 mt-2">
-                <button class="btn btn-block btn-danger @visibility" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
+            <div class="col-7 col-md-12">
+                <img src="@_imageService.DecodeImage(Model.Poster, Model.PosterType)" class="w-100" alt="Poster Image"/>
+                <button class="btn btn-block btn-danger mt-2 mb-4 @visibility" data-toggle="modal" data-target="#trailer">WATCH TRAILER</button>
             </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col h6">
-                <span class="text-light">Title:</span> 
-                <br />
-                <span class="text-muted">@Model.Title</span>
+            <div class="col-5 col-md-12">
+                <div class="h6">
+                    <span class="text-light">Title:</span> 
+                    <br />
+                    <span class="text-muted">@Model.Title</span>
+                </div>
+                <div class="h6 mt-3">
+                    <span class="text-light">Rating:</span> 
+                    <br />
+                    <span class="text-muted">@Model.Rating</span>
+                </div>
+                <div class="h6 mt-3">
+                    <span class="text-light">Release:</span> 
+                    <br />
+                    <span class="text-muted">@Model.ReleaseDate.ToString("dd-MMM-yyyy")</span>
+                </div>
+                <div class="h6 mt-3">
+                    <span class="text-light">Director:</span> 
+                    <br />
+                    <span class="text-muted">@director</span>
+                </div>
+                <div class="h6 mt-3">
+                    <span class="text-light">Movie Id:</span> 
+                    <br />
+                    <span class="text-muted">@Model.MovieId</span>
+                </div>
             </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col h6">
-                <span class="text-light">Rating:</span> 
-                <br />
-                <span class="text-muted">@Model.Rating</span>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col h6">
-                <span class="text-light">Release:</span> 
-                <br />
-                <span class="text-muted">@Model.ReleaseDate.ToString("dd-MMM-yyyy")</span>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col h6">
-                <span class="text-light">Director:</span> 
-                <br />
-                <!-- ToDo: bug, does not get director-->
-                <span class="text-muted">@Model.Crew.Where(c => c.Department == "Directing").FirstOrDefault().Name</span>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col h6">
-                <span class="text-light">Movie Id:</span> 
-                <br />
-                <span class="text-muted">@Model.MovieId</span>
-            </div>
+            
         </div>
     </div>
-
+    <!-- Movie Overview-->
     <div class="col-sm-12 col-md-6">
         <div class="row justify-content-between">
             <div class="col mt-auto">
