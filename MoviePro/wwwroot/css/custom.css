@@ -20,6 +20,10 @@ footer {
     width: 100%;
 }
 
+.modal-open {
+    padding-right: 0 !important;
+}
+
 /* Card styles*/
 .card-body {
     background-color: rgba(31, 37, 50,1);
@@ -219,7 +223,6 @@ span.page-link {
     width: 70%;
 }
 
-
 .tt-hint {
     color: #999 !important;
 }
@@ -252,27 +255,49 @@ span.page-link {
     color: #999 !important;
 }
 
-    .tt-suggestion:hover {
-        cursor: pointer;
-        color: #fff !important;
-        background-color: #f0326b;
-        border-color: #ff55a5;
-    }
+.tt-suggestion:hover {
+    cursor: pointer;
+    color: #fff !important;
+    background-color: #f0326b;
+    border-color: #ff55a5;
+}
 
-    .tt-suggestion.tt-cursor {
-        color: #fff !important;
-        background-color: #f0326b;
-    }
+.tt-suggestion.tt-cursor {
+    color: #fff !important;
+    background-color: #f0326b;
+}
 
-    .tt-suggestion strong {
-        color: #fff;
-    }
+.tt-suggestion strong {
+    color: #fff;
+}
 
-    .tt-suggestion p + strong {
-        margin: 0;
-    }
+.tt-suggestion p + strong {
+    margin: 0;
+}
 
 .custom-search {
     border-radius: 4px 0px 0px 4px !important;
     justify-content: center !important;
+}
+
+/* Technology icons */
+
+.bsicon {
+    color: purple;
+}
+
+.jsicon {
+    color: rgb(197, 197, 3);
+}
+
+.html5icon {
+    color: orangered;
+}
+
+.css3icon {
+    color: rgb(11,82,214);
+}
+
+.d-flex {
+    display: flex !important;
 }

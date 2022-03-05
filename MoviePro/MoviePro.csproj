@@ -10,6 +10,7 @@
   <ItemGroup>
     <Content Remove="Views\Home\Privacy.cshtml" />
     <Content Remove="wwwroot\img\bg.jpg" />
+    <Content Remove="wwwroot\img\git_original_wordmark_logo_icon_146510.png" />
   </ItemGroup>
 
   <ItemGroup>

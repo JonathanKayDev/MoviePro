@@ -598,6 +598,8 @@ a:focus, a:hover {
 .navbar-brand {
   height: auto;
   padding: 8px 0;
+  font-weight: bolder;
+  font-size: 1.5rem;
 }
 
 .navbar-brand h1 {
