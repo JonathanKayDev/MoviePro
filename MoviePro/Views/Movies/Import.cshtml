@@ -19,9 +19,9 @@
     <div class="col-12">
         <hr class="hr-blue" />
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
+    <div class="col-10 col-md-8 col-lg-6">
         <form asp-action="Import">
-            <div class="input-group" id="movieSearch">
+            <div class="input-group justify-content-center" id="movieSearch">
                 <input type="hidden" id="movie-id" name="id" value="0" />
                 <input type="text" class="form-control custom-search text-search typeahead" placeholder="Search TMDB for a movie">
                 <div class="input-group-append">
@@ -64,7 +64,7 @@
     </script>
 
     <script src="~/lib/typeahead.js/typeahead.bundle.min.js"></script>
-    <script src="~/js/custom.js"></script>
+@*    <script src="~/js/custom.js"></script>*@
 
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

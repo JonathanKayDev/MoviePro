@@ -214,10 +214,9 @@ span.page-link {
 .span.twitter-typeahead {
     flex: 1 0 auto;
     width: auto;
-    vertical-align: top !important;
 }
 .twitter-typeahead {
-    width: 100%;
+    width: 70%;
 }
 
 
