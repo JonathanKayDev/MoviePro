@@ -66,7 +66,7 @@ namespace MoviePro.Controllers
         public async Task<IActionResult> Library(int? page)
         {
             var pageNumber = page ?? 1;
-            var pageSize = 4;
+            var pageSize = 8;
 
             var movies = await _context.Movie.ToPagedListAsync(pageNumber, pageSize);
             return View(movies);

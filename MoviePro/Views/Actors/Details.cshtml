@@ -1,9 +1,12 @@
 ﻿@using MoviePro.Models.TMDB
 @model ActorDetail
 
+@{
+    ViewData["Title"] = "Details";
+}
 
 <div class="d-flex align-items-center">
-    <div class="row mb-4">
+    <div class="row px-2 mb-4">
         <div class="col-sm-12 col-md-4 mt-2">
             <img class="img-fluid" src="@Model.profile_path" alt="Actor Image">
         </div>
@@ -14,12 +17,6 @@
                         <td>Name:</td>
                         <td>
                             @Model.name
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Biography:</td>
-                        <td>
-                            @Model.biography
                         </td>
                     </tr>
                     <tr>
@@ -34,13 +31,14 @@
                             @Model.place_of_birth
                         </td>
                     </tr>
-
+                    <tr>
+                        <td>Biography:</td>
+                        <td>
+                            @Model.biography
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
-</div>
-<div class="row mt-4 mb-4">
-    <div class="col-12 mt-40 mb-4"></div>
 </div>

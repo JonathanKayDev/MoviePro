@@ -5,7 +5,7 @@
 @model LandingPageVM
 
 @{
-    ViewData["Title"] = "MoviePro";
+    ViewData["Title"] = "Home";
 }
 
 <div>
@@ -65,7 +65,7 @@
                                                         <div class="poster-link">
                                                             <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
                                                             <div class="poster-link-container align-items-center">
-                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                             </div>
                                                         </div>
 
@@ -134,7 +134,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@_imageService.DecodeImage(@movie.Movie.Poster, @movie.Movie.PosterType)" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.Movie.MovieId" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                                 </div>
                                                             </div>
 
@@ -200,7 +200,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
@@ -260,7 +260,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
@@ -320,7 +320,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
@@ -380,7 +380,7 @@
                                                             <div class="poster-link">
                                                                 <img src="@movie.poster_path" class="card-img-top" alt="Movie Poster">
                                                                 <div class="poster-link-container align-items-center">
-                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-4x"></i></a>
+                                                                    <a asp-action="Details" asp-controller="Movies" asp-route-id="@movie.id" class="link-info"><i class="fas fa-info-circle fa-3x"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
