@@ -9,4 +9,4 @@ The front end was developed with HTML, JavaScript, CSS and Bootstrap, using a bo
 # Technologies:
 C#, SQL, ASP.NET MVC, JS, CSS, Bootstrap, HTML5
 
-<a href="https://jk-bugtracker.herokuapp.com/" target="_blank">Visit Site</a>
+<a href="https://jk-moviepro.herokuapp.com/" target="_blank">Visit Site</a>
