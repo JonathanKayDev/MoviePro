@@ -13,13 +13,15 @@ namespace MoviePro.Services
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SecretsService _secretsService;
 
-        public SeedService(IOptions<AppSettings> appSettings, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public SeedService(IOptions<AppSettings> appSettings, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SecretsService secretsService)
         {
             _appSettings = appSettings.Value;
             _dbContext = dbContext;
             _userManager = userManager;
             _roleManager = roleManager;
+            _secretsService = secretsService;
         }
 
         public async Task ManageDataAsync()
@@ -58,28 +60,26 @@ namespace MoviePro.Services
             }
 
             // Admin
-            var credentials = _appSettings.MovieProSettings.DefaultCredentials;
             var newUser = new IdentityUser()
             {
-                Email = credentials.Email,
-                UserName = credentials.Email,
+                Email = _secretsService.GetDefaultEmail(),
+                UserName = _secretsService.GetDefaultEmail(),
                 EmailConfirmed = true
             };
 
-            await _userManager.CreateAsync(newUser, credentials.Password);
-            await _userManager.AddToRoleAsync(newUser, credentials.Role);
+            await _userManager.CreateAsync(newUser, _secretsService.GetDefaultPassword());
+            await _userManager.AddToRoleAsync(newUser, _appSettings.MovieProSettings.DefaultCredentials.Role);
 
             // Demo Admin
-            var demoCredentials = _appSettings.MovieProSettings.DemoAdminCredentials;
             var newDemoUser = new IdentityUser()
             {
-                Email = demoCredentials.Email,
-                UserName = demoCredentials.Email,
+                Email = _secretsService.GetDemoEmail(),
+                UserName = _secretsService.GetDemoEmail(),
                 EmailConfirmed = true
             };
 
-            await _userManager.CreateAsync(newDemoUser, demoCredentials.Password);
-            await _userManager.AddToRoleAsync(newDemoUser, demoCredentials.Role);
+            await _userManager.CreateAsync(newDemoUser, _secretsService.GetDemoPassword());
+            await _userManager.AddToRoleAsync(newDemoUser, _appSettings.MovieProSettings.DemoAdminCredentials.Role);
         }
 
         private async Task SeedCollections()

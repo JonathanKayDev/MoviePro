@@ -13,11 +13,13 @@ namespace MoviePro.Services
 
         private readonly AppSettings _appSettings;
         private readonly IHttpClientFactory _httpClient;
+        private readonly SecretsService _secretsService;
 
-        public TMDBMovieService(IOptions<AppSettings> appSettings, IHttpClientFactory httpClient)
+        public TMDBMovieService(IOptions<AppSettings> appSettings, IHttpClientFactory httpClient, SecretsService secretsService)
         {
             _appSettings = appSettings.Value;
             _httpClient = httpClient;
+            _secretsService = secretsService;
         }
 
         public async Task<ActorDetail> ActorDetailAsync(int id)
@@ -27,8 +29,9 @@ namespace MoviePro.Services
 
             var query = $"{_appSettings.TMDBSettings.BaseUrl}/person/{id}";
             var queryParams = new Dictionary<string, string>()
+
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key",  _secretsService.GetTmDbApiKey() },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
             };
 
@@ -56,7 +59,7 @@ namespace MoviePro.Services
             var query = $"{_appSettings.TMDBSettings.BaseUrl}/movie/{id}";
             var queryParams = new Dictionary<string, string>()
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _secretsService.GetTmDbApiKey() },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
                 { "append_to_response", _appSettings.TMDBSettings.QueryOptions.AppendToResponse }
             };
@@ -88,7 +91,7 @@ namespace MoviePro.Services
             var queryParams = new Dictionary<string, string>()
             {
                 // Key value pairs
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _secretsService.GetTmDbApiKey() },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
                 { "query", searchTerm },
                 { "page", _appSettings.TMDBSettings.QueryOptions.Page }
@@ -128,7 +131,7 @@ namespace MoviePro.Services
             var queryParams = new Dictionary<string, string>()
             {
                 // Key value pairs
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _secretsService.GetTmDbApiKey() },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
                 { "page", _appSettings.TMDBSettings.QueryOptions.Page }
             };
@@ -159,7 +162,7 @@ namespace MoviePro.Services
             var query = $"{_appSettings.TMDBSettings.BaseUrl}/search/movie";
             var queryParams = new Dictionary<string, string>()
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _secretsService.GetTmDbApiKey() },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language},
                 { "query", "%SEARCH" },
                 { "page", _appSettings.TMDBSettings.QueryOptions.Page }

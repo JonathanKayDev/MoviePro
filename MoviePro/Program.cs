@@ -25,6 +25,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 // register SeedService
 builder.Services.AddTransient<SeedService>();
+builder.Services.AddTransient<SecretsService>();
 // register TMDBMovieService and HttpClient
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();

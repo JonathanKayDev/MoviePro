@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+MoviePro/appsettings.Production.json
+MoviePro/appsettings.Development.json
+MoviePro/aws-beanstalk-tools-defaults.json

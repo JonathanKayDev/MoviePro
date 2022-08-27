@@ -5,9 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-MoviePro-9C094F6B-2732-4441-99F4-980BF8565F65</UserSecretsId>
+    <Platforms>AnyCPU;x64;ARM64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="appsettings.Production.json" />
     <Content Remove="Views\Home\Privacy.cshtml" />
     <Content Remove="wwwroot\img\bg.jpg" />
     <Content Remove="wwwroot\img\git_original_wordmark_logo_icon_146510.png" />

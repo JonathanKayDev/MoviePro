@@ -7,22 +7,23 @@ namespace MoviePro.Services
         public static string GetConnectionString(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
-            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            // Updated for AWS
+            var databaseUrl = Environment.GetEnvironmentVariable("RDS_HOSTNAME");
 
             return string.IsNullOrEmpty(databaseUrl) ? connectionString : BuildConnectionString(databaseUrl);
         }
 
+        // Updated for AWS
         private static string BuildConnectionString(string databaseUrl)
         {
-            var databaseUri = new Uri(databaseUrl);
-            var userInfo = databaseUri.UserInfo.Split(':');
             var builder = new NpgsqlConnectionStringBuilder
             {
-                Host = databaseUri.Host,
-                Port = databaseUri.Port,
-                Username = userInfo[0],
-                Password = userInfo[1],
-                Database = databaseUri.LocalPath.TrimStart('/'),
+                Host = Environment.GetEnvironmentVariable("RDS_HOSTNAME"),
+                Port = Int32.Parse(Environment.GetEnvironmentVariable("RDS_PORT")),
+                Username = Environment.GetEnvironmentVariable("RDS_USERNAME"),
+                Password = Environment.GetEnvironmentVariable("RDS_PASSWORD"),
+                Database = Environment.GetEnvironmentVariable("RDS_DB_NAME"),
+
                 SslMode = SslMode.Require,
                 TrustServerCertificate = true
             };
