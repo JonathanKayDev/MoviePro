@@ -1,0 +1,20 @@
+
+{
+    "region" : "eu-west-2",
+    "configuration" : "Debug",
+    "framework"     : "net6.0",
+    "self-contained" : false,
+    "application"    : "MoviePro",
+    "environment"    : "Moviepro-env",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "enhanced",
+    "additional-options"   : "",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.3.4 running .NET Core",
+    "environment-type"     : "SingleInstance",
+    "cname"                : "jk-moviepro",
+    "instance-type"        : "t3a.nano",
+    "key-pair"             : "",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}
