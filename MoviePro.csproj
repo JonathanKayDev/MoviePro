@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-MoviePro-9C094F6B-2732-4441-99F4-980BF8565F65</UserSecretsId>
     <Platforms>AnyCPU;x64;ARM64</Platforms>
+	<InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
